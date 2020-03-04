@@ -11,16 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Route::get('/', 'FrontendController@index')->name('frontend.index');
+Route::get('/about', 'FrontendController@about')->name('frontend.about');
+Route::get('/blog', 'FrontendController@blog')->name('frontend.blog');
+Route::get('/single-blog', 'FrontendController@singleBlog')->name('frontend.single-blog');
+Route::get('/cart', 'FrontendController@cart')->name('frontend.cart');
+Route::get('/checkout', 'FrontendController@checkout')->name('frontend.checkout');
+Route::get('/contact', 'FrontendController@contact')->name('frontend.contact');
+Route::get('/product-single', 'FrontendController@singleProduct')->name('frontend.single-product');
+Route::get('/shop', 'FrontendController@shop')->name('frontend.shop');
+Route::get('/wishlist', 'FrontendController@wishlist')->name('frontend.wishlist');
 
 //Auth::routes();
 
 Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
-
 
     Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
     Auth::routes();
